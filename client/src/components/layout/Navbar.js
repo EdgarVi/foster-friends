@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class Navbar extends Component {
   render() {
@@ -9,9 +10,6 @@ class Navbar extends Component {
           <div className="nav-wrapper white">
             <Link
               to="/"
-              style={{
-                fontFamily: "monospace"
-              }}
               className="col s5 brand-logo center black-text"
             >
               <i className="material-icons">pets</i>
@@ -22,4 +20,6 @@ class Navbar extends Component {
       </div>
     );
   }
-}export default Navbar;
+}
+
+export default Navbar;
