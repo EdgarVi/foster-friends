@@ -19,6 +19,13 @@ class Register extends Component {
     };
   }
   
+  componentDidMount() {
+    // If logged in and user navigates to Register page, should redirect them to dashboard
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
@@ -41,10 +48,15 @@ class Register extends Component {
     };
 
     this.props.registerUser(newUser, this.props.history); 
+    console.log(this.state);
+    console.log(this.props.errors);
+    console.log(this.props.errors);
+
   };
     
   render() {
-    const { errors } = this.state;return (
+    const { errors } = this.state;
+    return (
       <div className="container">
         <div className="row">
           <div className="col s8 offset-s2">
