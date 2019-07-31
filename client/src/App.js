@@ -16,6 +16,13 @@ import Login from "./components/auth/Login";
 import PrivateRoute from "./components/dashboard/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 
+// dashboard components
+import Profile from "./components/layout/Profile";
+import EditProfile from "./components/layout/EditProfile";
+import AddFriend from "./components/layout/AddFriend";
+import EditFriends from "./components/layout/EditFriends";
+import SearchFriends from "./components/layout/SearchFriends";
+import FriendsGallery from "./components/layout/FriendsGallery";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -49,6 +56,12 @@ class App extends Component {
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
+            <PrivateRoute exact path="/profile" component={Profile}/>
+            <PrivateRoute exact path="/edit-profile" component={EditProfile}/>
+            <PrivateRoute exact path="/add-friend" component={AddFriend}/>
+            <PrivateRoute exact path="/edit-friends" component={EditFriends}/>
+            <PrivateRoute exact path="/search-friends" component={SearchFriends}/>
+            <PrivateRoute exact path="/gallery" component={FriendsGallery}/>    
           </div>
         </Router>
       </Provider>

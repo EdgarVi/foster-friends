@@ -23,7 +23,11 @@ const UserSchema = new Schema({
     friends: [{
         type: Schema.Types.ObjectId,
         ref: "FriendSchema"
-    }]
+    }],
+    userType: {
+        type: String,
+        enum: ["Rescue Organization", "Shelter", "Individual"]
+    }
 });
 
 // export schema

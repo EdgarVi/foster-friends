@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
+import { Link } from "react-router-dom";
 
 // Import Materialize
 import M from "materialize-css";
@@ -13,6 +14,7 @@ class Dashboard extends Component {
   };
   
   componentDidMount(){
+    console.log(this.props);
     M.AutoInit();
   }
 
@@ -21,17 +23,23 @@ class Dashboard extends Component {
 
     return (
       <div>
-        <div className="row">
-            <div className="col s3">
-              <a className="dropdown-trigger btn" href="#" data-target='dropdown1'>Hello, {user.name}</a>
-              <ul id="dropdown1" className="dropdown-content">
-                <li><a href="#!">one</a></li>
-              </ul>
+        <ul id="slide-out" className="sidenav">
+          <li>
+            <div className="user-view">
+                <a><span className="black-text name">{user.name}</span></a>
             </div>
-            <div className="col s9">
-
-            </div>
-          </div>
+          </li>
+          <li><a class="subheader">Your profile</a></li>
+          <li><a><Link to="/profile">View your profile</Link></a></li>
+          <li><a><Link to="/edit-profile">Edit profile</Link></a></li>
+          <li><a onClick={this.onLogoutClick}>Logout</a></li>
+          <li><div class="divider"></div></li>          
+          <li><a class="subheader">Friends</a></li>
+          <li><a><Link to="/add-friend">Add friend</Link></a></li>
+          <li><a><Link to="/edit-friends">Edit friends</Link></a></li>
+          <li><a><Link to="/search-friends">Search friends</Link></a></li>
+        </ul>
+        <a data-target="slide-out" class="sidenav-trigger btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a>
       </div>
 
     );
