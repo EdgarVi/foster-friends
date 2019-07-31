@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import M from "materialize-css";
-
+import axios from "axios";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import {addFriend} from "../../actions/authActions";
+import {withRouter} from "react-router-dom";
 class AddFriend extends Component {
     constructor(){
       super();
@@ -12,19 +16,34 @@ class AddFriend extends Component {
       }
     }
     
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+            this.setState({
+            errors: nextProps.errors
+            });
+        }
+    }
+
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
     };
 
     onSubmit = e => {
         e.preventDefault(); // prevent page from reloading when submit is clicked
+
+        var neutered_ = false;
+        if(this.state.neutered === "true"){
+            neutered_ = true;
+        }
         const newFriend = {
             name: this.state.name,
             species: this.state.species,
             gender: this.state.gender,
-            neutered: this.state.neutered
+            neutered: neutered_
         };
-    
+        
+        this.props.addFriend(newFriend, this.props.history);
+        
     };
       
     componentDidMount(){
@@ -54,9 +73,9 @@ class AddFriend extends Component {
                             type="text"    
                             >
                                 <option value="" disabled selected>Select species</option>
-                                <option value="Dog">Dog</option>
-                                <option value="Cat">Cat</option>
-                                <option value="Other">Other</option>
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                                <option value="other">Other</option>
                             </select>
                             <label>Species</label>
                         </div>
@@ -70,8 +89,8 @@ class AddFriend extends Component {
                             type="text"
                             >
                                 <option value="" disabled selected>Select gender</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
                             </select>
                             <label>Gender</label>
                         </div>
@@ -105,4 +124,15 @@ class AddFriend extends Component {
   }
 }
 
-export default AddFriend;
+AddFriend.propTypes = {
+    addFriend: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+})
+
+export default connect (mapStateToProps, {addFriend})(withRouter(AddFriend));
