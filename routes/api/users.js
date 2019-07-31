@@ -9,8 +9,9 @@ const passport = require("passport");
 const validateRegisterInput = require("../../validation/register");
 const validateLoginInput = require("../../validation/login");
 
-// Load User model
+// Load models
 const User = require("../../models/User");
+const Friend = require("../../models/Friend");
 
 // @route POST api/users/register
 // @desc Register user
@@ -104,6 +105,23 @@ router.post('/login', (req, res) => {
       }
     });
   });
+});
+
+
+// @route POST api/users/add-friend
+// @desc Write friend to database
+// @access Public (need to figure out how to make private)
+router.post('/add-friend', (req, res)=>{
+  const newFriend = new Friend({
+      name: req.body.name,
+      species: req.body.species,
+      gender: req.body.gender,
+      neutered: req.body.neutered
+  });
+  newFriend
+            .save()
+            .then(user => res.json(user))
+            .catch(err => console.log(err));
 });
 
 module.exports = router;

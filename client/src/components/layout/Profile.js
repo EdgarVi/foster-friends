@@ -5,9 +5,12 @@ class Profile extends Component {
   render() {
     return (
         <div>
-            <h1>profile</h1>
+          <ul className="collection">
+            <li className="collection-item">
+              <p></p>
+            </li>
+          </ul>
         </div>
-
     );
   }
 }

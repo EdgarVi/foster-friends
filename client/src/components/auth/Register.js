@@ -48,10 +48,6 @@ class Register extends Component {
     };
 
     this.props.registerUser(newUser, this.props.history); 
-    console.log(this.state);
-    console.log(this.props.errors);
-    console.log(this.props.errors);
-
   };
     
   render() {

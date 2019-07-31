@@ -14,7 +14,6 @@ class Dashboard extends Component {
   };
   
   componentDidMount(){
-    console.log(this.props);
     M.AutoInit();
   }
 

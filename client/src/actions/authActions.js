@@ -66,3 +66,16 @@ export const logoutUser = () => dispatch => {
   // Set current user to empty object {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
 };
+
+// Register friend
+export const addFriend = (userData, history) => dispatch => {
+  axios
+    .post('http://localhost:5000/api/users/add-friend', userData)
+    .then(res => history.push("/profile"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
