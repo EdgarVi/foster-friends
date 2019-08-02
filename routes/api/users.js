@@ -116,12 +116,21 @@ router.post('/add-friend', (req, res)=>{
       name: req.body.name,
       species: req.body.species,
       gender: req.body.gender,
-      neutered: req.body.neutered
+      neutered: req.body.neutered,
+      owner: req.body.owner
   });
+  
+  User.findOne({_id: req.body.owner})
+  .exec((err, user) => {
+    user.friends.push(newFriend);
+    user.save();
+  })
+
   newFriend
-            .save()
-            .then(user => res.json(user))
-            .catch(err => console.log(err));
+    .save()
+    .then(user => res.json(user))
+    .catch(err => console.log(err));
+    
 });
 
 module.exports = router;

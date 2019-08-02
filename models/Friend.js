@@ -12,28 +12,20 @@ const FriendSchema = new Schema({
         type: String,
         required: true
     },
-    /*age: {
-        type: Number,
-        required: true
-    },*/
     gender: {
         type: String,
         enum: ["male", "female"],
         required: true
     },
-    /*breed: {
-        type: String,
-        required: false
-    },*/
     neutered: {
         type: Boolean,
         required: true
     },
     // make reference to UserSchema
-    /*foster: {
+    owner: {
         type: Schema.Types.ObjectId,
-        ref: "UserSchema"
-    }*/
+        ref: "user"
+    }
 
 });
 

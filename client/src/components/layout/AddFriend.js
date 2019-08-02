@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import M from "materialize-css";
-import axios from "axios";
+
+// redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {addFriend} from "../../actions/authActions";
 import {withRouter} from "react-router-dom";
+
 class AddFriend extends Component {
     constructor(){
       super();
@@ -12,7 +14,8 @@ class AddFriend extends Component {
         name: "",
         species: "",
         gender: "",
-        neutered: false
+        neutered: false,
+        errors: {}
       }
     }
     
@@ -39,9 +42,10 @@ class AddFriend extends Component {
             name: this.state.name,
             species: this.state.species,
             gender: this.state.gender,
-            neutered: neutered_
+            neutered: neutered_,
+            owner: this.props.auth.user.id
         };
-        
+        //console.log(this.props.errors)
         this.props.addFriend(newFriend, this.props.history);
         
     };
@@ -50,7 +54,7 @@ class AddFriend extends Component {
         M.AutoInit();
     }
 
-    render() {    
+    render() { 
         return (
             <div className="container">
                 <form className="col s12" onSubmit={this.onSubmit}>
@@ -127,12 +131,12 @@ class AddFriend extends Component {
 AddFriend.propTypes = {
     addFriend: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
-}
+    //errors: PropTypes.object.isRequired
+};
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    errors: state.errors
-})
+    //errors: state.errors
+});
 
 export default connect (mapStateToProps, {addFriend})(withRouter(AddFriend));
