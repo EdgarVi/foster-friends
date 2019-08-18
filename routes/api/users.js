@@ -4,6 +4,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
+var mongoose = require('mongoose');
+mongoose.set('debug', true);
+
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
@@ -89,7 +92,7 @@ router.post('/login', (req, res) => {
           payload,
           keys.secretOrKey,
           {
-            expiresIn: 31556926 // 1 year in seconds
+            expiresIn: 86400 // 1 day in seconds
           },
           (err, token) => {
             res.json({
@@ -131,6 +134,43 @@ router.post('/add-friend', (req, res)=>{
     .then(user => res.json(user))
     .catch(err => console.log(err));
     
+});
+
+// @route GET api/users/get-user-data (doesn't work)
+// @desc Get friend from database
+// @access Public
+router.get('/get-user', (req, res) => {
+  var id = new mongoose.Types.ObjectId(req.body.user);
+  User.findOne({_id: id}).then((user) =>{
+    if(!user){
+      return res.status(404).send('user does not exist');
+    }
+    console.log('request okay');
+    return res.send(user);
+  }).catch((e) => {
+    res.status(400).send(e);
+  })
+});
+
+// @route GET api/users/search-friends (doesn't work)
+// @desc Query friends based off search parameters
+// @access Public
+router.get('/get-friends', (req, res) =>{
+  //need to make some sort of query/filter statement to return a list of friends
+  var species_ = req.body.species;
+  var gender_ = req.body.gender;
+  var neutered_ = req.body.neutered;
+  //return res.send(req.body);
+  
+  // query db
+  Friend.find({species: species_},{gender:gender_},{neutered:neutered_}).then((friends_) =>{
+    if(!friends_){
+      return res.status(404).send('query error, nothing returned');
+    }
+    return res.send(friends_);
+  }).catch((e) =>{
+    res.status(400).send(4);
+  })
 });
 
 module.exports = router;
