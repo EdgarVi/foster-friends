@@ -1,6 +1,8 @@
 # Foster Friends
 Minimum viable product developed by Edgar Villasenor.
 
+The landing page is currently available on [www.foster-friends.com](http://www.foster-friends.com/).
+
 ## Timeline
 The following features will be completed by 31 August 2019 and will determine the completion of the minimum viable product:
  * Login/Logout authorization flow
