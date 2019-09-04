@@ -2,46 +2,27 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
-import { Link } from "react-router-dom";
+import Sidenav from "../layout/Sidenav";
 
-// Import Materialize
-import M from "materialize-css";
 
 class Dashboard extends Component {
-  onLogoutClick = e => {
-    e.preventDefault();
-    this.props.logoutUser();
-  };
   
-  componentDidMount(){
-    M.AutoInit();
-  }
 
   render() {
-    const { user } = this.props.auth;
-
-    return (
-      <div>
-        <ul id="slide-out" className="sidenav">
-          <li>
-            <div className="user-view">
-                <a><span className="black-text name">{user.name}</span></a>
-            </div>
-          </li>
-          <li><a class="subheader">Your profile</a></li>
-          <li><a><Link to="/profile">View your profile</Link></a></li>
-          <li><a><Link to="/edit-profile">Edit profile</Link></a></li>
-          <li><a onClick={this.onLogoutClick}>Logout</a></li>
-          <li><div class="divider"></div></li>          
-          <li><a class="subheader">Friends</a></li>
-          <li><a><Link to="/add-friend">Add friend</Link></a></li>
-          <li><a><Link to="/edit-friends">Edit friends</Link></a></li>
-          <li><a><Link to="/search-friends">Search friends</Link></a></li>
-        </ul>
-        <a data-target="slide-out" class="sidenav-trigger btn-floating waves-effect waves-light red"><i class="material-icons">add</i></a>
+  const { user } = this.props.auth;
+  return(
+    <div>
+      <div className="row">
+        <div className="col s3">
+          <Sidenav name={user.name}/>
+        </div>
+        <div className="col s9">
+          <h2>Welcome {user.name}!</h2>
+          <p>You are logged in</p>
+        </div>
       </div>
-
-    );
+    </div>
+   );
   }
 }
 

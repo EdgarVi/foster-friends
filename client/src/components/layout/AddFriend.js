@@ -45,7 +45,8 @@ class AddFriend extends Component {
             neutered: neutered_,
             owner: this.props.auth.user.id
         };
-        //console.log(this.props.errors)
+
+        // call middleware
         this.props.addFriend(newFriend, this.props.history);
         
     };
@@ -131,12 +132,10 @@ class AddFriend extends Component {
 AddFriend.propTypes = {
     addFriend: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    //errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-    auth: state.auth,
-    //errors: state.errors
+    auth: state.auth
 });
 
 export default connect (mapStateToProps, {addFriend})(withRouter(AddFriend));
