@@ -6,8 +6,8 @@ import Sidenav from "../layout/Sidenav";
 // redux
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {getFriends} from "../../actions/authActions";
 import {withRouter} from "react-router-dom";
+import axios from 'axios';
 
 class SearchFriends extends Component {
     constructor(){
@@ -27,8 +27,9 @@ class SearchFriends extends Component {
 
     onChange = e => {
         this.setState({ [e.target.id]: e.target.value });
-    };
-
+    };    
+    
+    
     onSubmit = e => {
         e.preventDefault(); // prevent page from reloading when submit is clicked
         
@@ -38,15 +39,15 @@ class SearchFriends extends Component {
         if(n.neutured === "true"){
             neutered_ = true;
         }
-        const searchQuery = {
-            species: this.state.species,
-            gender: this.state.gender,
-            neutured: neutered_
-        };
-
-        // call middleware
-        const result = this.props.getFriends(searchQuery, this.props.history);
-        //console.log(result);
+        
+        axios.get('http://localhost:5000/api/users/get-friends',
+            {params: {
+                species: this.state.species,
+                gender: this.state.gender,
+                neutured: neutered_
+            }}
+        );
+        
     };
 
     render(){
@@ -129,8 +130,7 @@ class SearchFriends extends Component {
 }
 
 
-SearchFriends.propTypes = {
-    getFriends: PropTypes.func.isRequired,
+SearchFriends.propTypes = {    
     auth: PropTypes.object.isRequired,
 };
 
@@ -138,4 +138,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 });
 
-export default connect(mapStateToProps, {getFriends})(withRouter(SearchFriends));
+export default connect(mapStateToProps)(withRouter(SearchFriends));

@@ -72,13 +72,7 @@ export const logoutUser = () => dispatch => {
 export const addFriend = (userData, history) => dispatch => {
   axios
     .post('http://localhost:5000/api/users/add-friend', userData)
-    .then(res => history.push("/profile"))
-    .catch(err =>
-      dispatch({
-        type: GET_ERRORS,
-        payload: err.response.data
-      })
-    );
+    .then(res => history.push("/profile"));
 };
 
 // Get User 
@@ -91,8 +85,7 @@ export const getUser = userID => dispatch => {
     .then(res => {
       console.log(res.data);
       console.log(res.status);
-    })
-    .catch(err => dispatch(console.log(err)));
+    });
 };
 
 /*
@@ -106,9 +99,8 @@ and I've only done this for the backend server.
 
 From firefox we get a 204 response from server - no content
 */
-export const getFriends = searchQuery => dispatch => {
-
-  console.log(searchQuery);
+/*export const getFriends = searchQuery => dispatch => {
+   
   axios
   .get('http://localhost:5000/api/users/get-friends', searchQuery)
   .then(res => {
@@ -116,4 +108,4 @@ export const getFriends = searchQuery => dispatch => {
     console.log(res.status);
   })
   .catch(err => console.log(err));
-};
+};*/

@@ -1,21 +1,12 @@
 const express = require("express");
-var router = express.Router();
+const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 var mongoose = require('mongoose');
-
 mongoose.set('debug', true);
 
-var cors = require('cors');
-router.all('*', cors());
-router.options("/*", (req, res) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  return res.send(200);
-});
 
 // Load input validation
 const validateRegisterInput = require("../../validation/register");
@@ -145,17 +136,14 @@ router.post('/add-friend', (req, res)=>{
     
 });
 
-
-// @route GET api/users/get-user 
+// @route GET api/users/get-user-data (doesn't work)
 // @desc Get friend from database
 // @access Public
 router.get('/get-user', (req, res) => {
-
-  const local_id = new mongoose.Types.ObjectId(req.body.user);
-  
-  User.findById(local_id).then((user) =>{
+  var id = new mongoose.Types.ObjectId(req.body.user);
+  User.findOne({_id: id}).then((user) =>{
     if(!user){
-      return res.status(404).send('404 ERROR: User does not exist or can not be found');
+      return res.status(404).send('user does not exist');
     }
     console.log('request okay');
     return res.send(user);
@@ -165,25 +153,20 @@ router.get('/get-user', (req, res) => {
 });
 
 
-// @route GET api/users/get-friends
+
+// @route GET api/users/search-friends (doesn't work)
 // @desc Query friends based off search parameters
 // @access Public
 router.get('/get-friends', (req, res) =>{
-  //need to make some sort of query/filter statement to return a list of friends
-  var species_ = req.body.species;
-  var gender_ = req.body.gender;
-  var neutered_ = req.body.neutered;
-  
+  var species_ = req.query.species;
+  var gender_ = req.query.gender;
+  var neutered_ = req.query.neutered;
   
   // query db
-  Friend.find({species: species_},{gender:gender_},{neutered:neutered_}).then((friends_) =>{
-    if(!friends_){
-      return res.status(404).send('query error, nothing returned');
-    }
-    return res.send(friends_);
-  }).catch((e) =>{
-    res.status(400).send(4);
+  Friend.find({species: species_},{gender:gender_},{neutered:neutered_}).then((_friends) => {
+    return res.send(_friends);
   })
+  
 });
 
 module.exports = router;
