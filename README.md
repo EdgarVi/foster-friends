@@ -4,7 +4,7 @@ Minimum viable product developed by Edgar Villasenor.
 The landing page is currently available on [www.foster-friends.com](http://www.foster-friends.com/).
 
 ## Timeline
-The following features will be completed by 31 August 2019 and will determine the completion of the minimum viable product:
+The following features will be completed by 13 December 2019 and will determine the completion of the minimum viable product:
  * Login/Logout authorization flow
  * Logout timeout
  * On signing in: User is pushed straight to gallery, DB is queried to return all friends
