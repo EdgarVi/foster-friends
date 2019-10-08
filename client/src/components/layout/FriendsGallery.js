@@ -1,19 +1,41 @@
 import React, {Component} from "react";
-
-class Gallery extends Component {
+import M from "materialize-css";
+import Sidenav from "./Sidenav";
+class FriendsGallery extends Component {
     constructor(){
         super();
+        this.state = {
+
+        }
     }
 
     componentDidMount(){
+        M.AutoInit();
 
+        console.log(this.state);
     }
 
     render() {
         return(
-            <div id="Gallery">
-                <h2 className="center-align">Friends</h2>
-                 <table className="centered highlight">
+            <div>
+                <div className="row">
+                    <div className="col s3">
+                        <Sidenav name={"placeholder name"}/>
+                    </div>
+                <div className="col s9" id="Gallery">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col s8 offset-s2">
+                                <div className="col s12">
+                                    <h4 className="center-align">
+                                        <b>Friends</b>
+                                    </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="col s12">
+                <table className="centered highlight">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -24,7 +46,6 @@ class Gallery extends Component {
                             <th>Foster or Adopt</th>
                         </tr>
                     </thead>
-
                     <tbody>
                         <tr>
                             <td>Zeus</td>
@@ -44,13 +65,11 @@ class Gallery extends Component {
                         </tr>
                     </tbody>
                     </table>
-                    <div className="center-align">
-                        <a className="waves-effect waves-light btn">prev</a>
-                        <a className="waves-effect waves-light btn">next</a>
-                    </div>
-            </div>
-        )
-    }
+                </div>
+                </div>
+            </div>          
+        </div>            
+    )}
 }
 
-export default Gallery;
+export default FriendsGallery;

@@ -11,7 +11,6 @@ app.options('*', cors()) // include before other routes
 app.use(cors({origin: 'http://localhost:3000', }));
 
 
-
 // Bodyparser middleware
 app.use(
     bodyParser.urlencoded({

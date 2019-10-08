@@ -41,20 +41,20 @@ class SearchFriends extends Component {
         }
         
         axios.get('http://localhost:5000/api/users/get-friends',
-            {params: {
+            {
+                params: {
                 species: this.state.species,
                 gender: this.state.gender,
                 neutured: neutered_
-            }}
-        );
+            }
+        }).then(res => this.props.history.push("/gallery", {res: res.data}));
         
     };
 
     render(){
-        return (
-            
-        <div>
-            <div className="row">
+        return (    
+            <div>
+                <div className="row">
                 <div className="col s3">
                     <Sidenav name={this.props.auth.user.name}/>
                 </div>

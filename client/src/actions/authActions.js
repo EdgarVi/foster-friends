@@ -87,25 +87,3 @@ export const getUser = userID => dispatch => {
       console.log(res.status);
     });
 };
-
-/*
-thoughts I have as I'm debugging this:
-the problem is coming from my middleware
-there has to be some sort of issue with the request headers
-Everything else works: the input from React state is fine, 
-my backend works and has been tested by Postman
-My guess is that I need to configure CORS for frontend server
-and I've only done this for the backend server.
-
-From firefox we get a 204 response from server - no content
-*/
-/*export const getFriends = searchQuery => dispatch => {
-   
-  axios
-  .get('http://localhost:5000/api/users/get-friends', searchQuery)
-  .then(res => {
-    console.log(res.data);
-    console.log(res.status);
-  })
-  .catch(err => console.log(err));
-};*/
