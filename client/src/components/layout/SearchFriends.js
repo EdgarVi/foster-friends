@@ -47,8 +47,7 @@ class SearchFriends extends Component {
                 gender: this.state.gender,
                 neutured: neutered_
             }
-        }).then(res => this.props.history.push("/gallery", {res: res.data}));
-        
+        }).then(res => this.props.history.push('/gallery', {data: res.data}));
     };
 
     render(){
