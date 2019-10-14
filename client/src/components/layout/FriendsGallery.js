@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import M from "materialize-css";
 import Sidenav from "./Sidenav";
+
 class FriendsGallery extends Component {
     constructor(){
         super();
@@ -38,39 +39,25 @@ class FriendsGallery extends Component {
                     </div>
                 </div>
                 <div className="col s12">
-                <table className="centered highlight">
+                <table className="highlight">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Age</th>
-                            <th>Species</th>
                             <th>Gender</th>
-                            <th>Location</th>
-                            <th>Foster or Adopt</th>
                         </tr>
                     </thead>
                     <tbody>
+                    <tbody className="Table-body">
+                    {this.state.friends.map((friend) => (
                         <tr>
-                            <td>Zeus</td>
-                            <td>3?</td>
-                            <td>Dog</td>
-                            <td>Male</td>
-                            <td>Anchorage, AK</td>
-                            <td>Adopt</td>
-                        </tr>
-                        <tr>
-                            <td>Chad</td>
-                            <td>3</td>
-                            <td>Cat</td>
-                            <td>Male</td>
-                            <td>Pullman, WA</td>
-                            <td>Foster</td>
-                        </tr>
+                            <th>{friend.gender}</th>
+                        </tr> 
+                    ))}
+                </tbody> 
                     </tbody>
                     </table>
                 </div>
                 </div>
-            </div>          
+            </div>
         </div>            
     )}
 }
