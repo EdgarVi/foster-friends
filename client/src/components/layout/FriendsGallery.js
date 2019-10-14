@@ -5,14 +5,17 @@ class FriendsGallery extends Component {
     constructor(){
         super();
         this.state = {
-
+            friends: [],
+            props: {}
         }
     }
 
     componentDidMount(){
         M.AutoInit();
-
-        console.log(this.state);
+        this.setState({
+            friends: this.props.location.state.data,
+            props: this.props
+        }, () => console.log(this.state));
     }
 
     render() {
