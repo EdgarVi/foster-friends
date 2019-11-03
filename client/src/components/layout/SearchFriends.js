@@ -15,7 +15,7 @@ class SearchFriends extends Component {
         this.state = {
             species: "",
             gender: "",
-            neutured: ""
+            neutered: ""
         }
 
         this.onSubmit = this.onSubmit.bind(this);
@@ -33,19 +33,13 @@ class SearchFriends extends Component {
     onSubmit = e => {
         e.preventDefault(); // prevent page from reloading when submit is clicked
         
-        var neutered_ = false;
-        var n = this.state;
-        // I don't know why this works
-        if(n.neutured === "true"){
-            neutered_ = true;
-        }
         
         axios.get('http://localhost:5000/api/users/get-friends',
             {
                 params: {
                 species: this.state.species,
                 gender: this.state.gender,
-                neutured: neutered_
+                neutered: this.state.neutered
             }
         }).then(res => this.props.history.push('/gallery', {data: res.data}));
     };
@@ -100,8 +94,8 @@ class SearchFriends extends Component {
                             <div className="input-field">
                                 <select
                                 onChange={this.onChange}
-                                value={this.state.neutured}
-                                id="neutured"
+                                value={this.state.neutered}
+                                id="neutered"
                                 type="text">
                                     <option value="" disabled defaultValue>Choose your option</option>
                                     <option value="true">Yes</option>

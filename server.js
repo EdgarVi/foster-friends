@@ -7,9 +7,7 @@ const users = require("./routes/api/users");
 const app = express();
 
 // CORS
-app.options('*', cors()) // include before other routes 
-app.use(cors({origin: 'http://localhost:3000', }));
-
+app.use(cors());
 
 // Bodyparser middleware
 app.use(
@@ -34,7 +32,6 @@ app.use(passport.initialize());
 // Passport config
 require("./config/passport")(passport);
 
-//app.options("*", cors());
 // Routes
 app.use("/api/users", users);
 

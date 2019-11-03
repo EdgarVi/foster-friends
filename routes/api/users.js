@@ -157,16 +157,17 @@ router.get('/get-user', (req, res) => {
 // @route GET api/users/search-friends (doesn't work)
 // @desc Query friends based off search parameters
 // @access Public
-router.get('/get-friends', (req, res) =>{
+router.get("/get-friends", (req, res) =>{
   var species_ = req.query.species;
   var gender_ = req.query.gender;
   var neutered_ = req.query.neutered;
-  
+  console.log(req.query);
   // query db
-  Friend.find({species: species_},{gender:gender_},{neutered:neutered_}).then((_friends) => {
+  Friend.find({species:species_},{gender:gender_},{neutered:neutered_}).then((_friends) => {
     return res.send(_friends);
-  })
-  
+  }).catch((e) => {
+    res.status(400).send(e);
+  });
 });
 
 module.exports = router;

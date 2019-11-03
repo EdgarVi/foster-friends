@@ -18,7 +18,8 @@ const FriendSchema = new Schema({
         required: true
     },
     neutered: {
-        type: Boolean,
+        type: String,
+        enum: ["true", "false"],
         required: true
     },
     // make reference to UserSchema
