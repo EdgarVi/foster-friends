@@ -162,8 +162,9 @@ router.get("/get-friends", (req, res) =>{
   var gender_ = req.query.gender;
   var neutered_ = req.query.neutered;
   console.log(req.query);
+  
   // query db
-  Friend.find({species:species_},{gender:gender_},{neutered:neutered_}).then((_friends) => {
+  Friend.find({species:species_, gender:gender_}).then((_friends) => {
     return res.send(_friends);
   }).catch((e) => {
     res.status(400).send(e);
