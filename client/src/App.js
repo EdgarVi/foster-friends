@@ -22,6 +22,7 @@ import AddFriend from "./components/layout/AddFriend";
 import EditFriends from "./components/layout/EditFriends";
 import SearchFriends from "./components/layout/SearchFriends";
 import FriendsGallery from "./components/layout/FriendsGallery";
+import FriendProfile from "./components/layout/FriendProfile";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -59,7 +60,8 @@ class App extends Component {
             <PrivateRoute exact path="/add-friend" component={AddFriend}/>
             <PrivateRoute exact path="/edit-friends" component={EditFriends}/>
             <PrivateRoute exact path="/search-friends" component={SearchFriends}/>
-            <PrivateRoute exact path="/gallery" component={FriendsGallery}/>    
+            <PrivateRoute exact path="/gallery" component={FriendsGallery}/> 
+            <PrivateRoute path="/friends/:id" component={FriendProfile} exact/>   
           </div>
         </Router>
       </Provider>
