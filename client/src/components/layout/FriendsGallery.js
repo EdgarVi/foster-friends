@@ -56,9 +56,9 @@ class FriendsGallery extends Component {
                                         key = {friend._id}
                                         onClick = {() => this.props.history.push(`/friends/${friend._id}`)}
                                     >
-                                        <th>{friend.name}</th>
-                                        <th>{friend.gender}</th>
-                                        <th>{friend.species}</th>
+                                        <td>{friend.name}</td>
+                                        <td>{friend.gender}</td>
+                                        <td>{friend.species}</td>
                                     </tr> 
                                 ))}
                             </tbody> 
