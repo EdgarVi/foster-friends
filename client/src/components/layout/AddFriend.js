@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import M from "materialize-css";
+import Sidenav from "./Sidenav";
 
 // redux
 import PropTypes from "prop-types";
@@ -57,73 +58,78 @@ class AddFriend extends Component {
 
     render() { 
         return (
-            <div className="container">
-                <form className="col s12" onSubmit={this.onSubmit}>
-                    <div className="row">
-                        <div className="input-field">
-                            <input 
-                            onChange={this.onChange}
-                            value={this.state.name}
-                            id="name"
-                            type="text"></input>
-                            <label htmlFor="name">Name</label>
+            <div className="row AddFriend">
+                <div className="col s3">
+                    <Sidenav name={"placeholder name"}/>
+                </div>
+                <div className="container">
+                <form className="col s9" onSubmit={this.onSubmit}>
+                        <div className="row">
+                            <div className="input-field">
+                                <input 
+                                onChange={this.onChange}
+                                value={this.state.name}
+                                id="name"
+                                type="text"></input>
+                                <label htmlFor="name">Name</label>
+                            </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <select
-                            onChange={this.onChange}
-                            value={this.state.species}
-                            id="species"
-                            type="text"    
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <select
+                                onChange={this.onChange}
+                                value={this.state.species}
+                                id="species"
+                                type="text"    
+                                >
+                                    <option value="" disabled selected>Select species</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <label>Species</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <select
+                                onChange={this.onChange}
+                                value={this.state.gender}
+                                id="gender"
+                                type="text"
+                                >
+                                    <option value="" disabled selected>Select gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <label>Gender</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <select
+                                onChange={this.onChange}
+                                value={this.state.neutered}
+                                id="neutered"
+                                type="text"
+                                >
+                                    <option value="" disabled selected>Neutered?</option>
+                                    <option value="true">Yes</option>
+                                    <option value="false">No</option>
+                                </select>
+                                <label>Neutered?</label>
+                            </div>
+                        </div>
+                        <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+                            <button
+                            type="submit"
+                            className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                             >
-                                <option value="" disabled selected>Select species</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="other">Other</option>
-                            </select>
-                            <label>Species</label>
+                            Register Friend
+                            </button>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <select
-                            onChange={this.onChange}
-                            value={this.state.gender}
-                            id="gender"
-                            type="text"
-                            >
-                                <option value="" disabled selected>Select gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                            </select>
-                            <label>Gender</label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="input-field col s12">
-                            <select
-                            onChange={this.onChange}
-                            value={this.state.neutered}
-                            id="neutered"
-                            type="text"
-                            >
-                                <option value="" disabled selected>Neutered?</option>
-                                <option value="true">Yes</option>
-                                <option value="false">No</option>
-                            </select>
-                            <label>Neutered?</label>
-                        </div>
-                    </div>
-                    <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                        <button
-                        type="submit"
-                        className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                        >
-                        Register Friend
-                        </button>
-                    </div>
-                </form>    
+                    </form>    
+                </div>
             </div>
     );
   }
