@@ -16,10 +16,15 @@ class AddFriend extends Component {
         species: "",
         gender: "",
         neutered: false,
+        about: "",
         errors: {}
       }
     }
     
+    componentDidMount(){
+        M.AutoInit();
+    }
+
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
             this.setState({
@@ -44,6 +49,7 @@ class AddFriend extends Component {
             species: this.state.species,
             gender: this.state.gender,
             neutered: neutered_,
+            about: this.state.about,
             owner: this.props.auth.user.id
         };
 
@@ -52,15 +58,12 @@ class AddFriend extends Component {
         
     };
       
-    componentDidMount(){
-        M.AutoInit();
-    }
 
     render() { 
         return (
             <div className="row AddFriend">
                 <div className="col s3">
-                    <Sidenav name={"placeholder name"}/>
+                    <Sidenav name={"placeholder"}/>
                 </div>
                 <div className="container">
                 <form className="col s9" onSubmit={this.onSubmit}>
@@ -118,6 +121,17 @@ class AddFriend extends Component {
                                     <option value="false">No</option>
                                 </select>
                                 <label>Neutered?</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <textarea id="textarea1" 
+                                    className="materialize-textarea"
+                                    onChange={this.onChange}
+                                    value={this.state.value}
+                                    >
+                                </textarea>
+                                <label for="textarea1">Tell us about your friend!</label>
                             </div>
                         </div>
                         <div className="col s12" style={{ paddingLeft: "11.250px" }}>
