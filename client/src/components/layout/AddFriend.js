@@ -125,14 +125,13 @@ class AddFriend extends Component {
                             </div>
                         </div>
                         <div className="row">
-                            <div className="input-field col s12">
-                                <textarea id="textarea1" 
-                                    className="materialize-textarea"
-                                    onChange={this.onChange}
-                                    value={this.state.value}
-                                    >
-                                </textarea>
-                                <label for="textarea1">Tell us about your friend!</label>
+                            <div className="input-field">
+                                <input 
+                                onChange={this.onChange}
+                                value={this.state.about}
+                                id="about"
+                                type="text"></input>
+                                <label htmlFor="name">Tell us about your friend!</label>
                             </div>
                         </div>
                         <div className="col s12" style={{ paddingLeft: "11.250px" }}>
