@@ -34,8 +34,10 @@ class FriendProfile extends Component {
                     </div>
                     <div className="col s9" id="Friend-Profile">
                         <h4 className="center-align">
-                            <b></b>
+                            <b>Profile</b>
                         </h4>
+                        <h5>About</h5>
+                        <p></p>
                     </div>  
                 </div>      
             </div>

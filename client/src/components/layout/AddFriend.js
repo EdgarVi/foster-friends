@@ -23,6 +23,7 @@ class AddFriend extends Component {
     
     componentDidMount(){
         M.AutoInit();
+        
     }
 
     componentWillReceiveProps(nextProps) {
