@@ -36,7 +36,8 @@ router.post("/register", (req, res) => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        userType: req.body.userType
       });
 
       // Hash password before saving in database
@@ -115,6 +116,8 @@ router.post('/login', (req, res) => {
 // @desc Write friend to database
 // @access Public (need to figure out how to make private)
 router.post('/add-friend', (req, res)=>{
+  
+  var newFriendInfo = new mongoose.Schema()
   const newFriend = new Friend({
       name: req.body.name,
       species: req.body.species,

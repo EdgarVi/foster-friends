@@ -138,7 +138,7 @@ class Register extends Component {
                   >
                     <option value="" disabled selected>What kind of user are you?</option>
                     <option value="Rescue Organization">Rescue Organization</option>
-                    <option value="Animal Shelter">Animal Shelter</option>
+                    <option value="Shelter">Animal Shelter</option>
                     <option value="Individual">Individual</option>
                   </select>
                   <label>User type</label>
