@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, withRouter  } from "react-router-dom";
+import M from "materialize-css";
 
 // redux
 import PropTypes from "prop-types";
@@ -15,6 +16,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      userType: "",
       errors: {}
     };
   }
@@ -24,6 +26,7 @@ class Register extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
+    M.AutoInit();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,7 +47,8 @@ class Register extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      userType: this.state.userType
     };
 
     this.props.registerUser(newUser, this.props.history); 
@@ -124,6 +128,20 @@ class Register extends Component {
                 />
                 <label htmlFor="password2">Confirm Password</label>
                 <span className="red-text">{errors.password2}</span>
+              </div>
+              <div className="input-field col s12">
+                  <select
+                  onChange={this.onChange}
+                  value={this.state.userType}
+                  id="userType"
+                  type="text"
+                  >
+                    <option value="" disabled selected>What kind of user are you?</option>
+                    <option value="Rescue Organization">Rescue Organization</option>
+                    <option value="Animal Shelter">Animal Shelter</option>
+                    <option value="Individual">Individual</option>
+                  </select>
+                  <label>User type</label>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
