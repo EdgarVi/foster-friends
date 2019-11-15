@@ -2,14 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
-// Embedded schema
-var FriendInfoSchema = new Schema({
-    about: {
-        type: String, 
-        required: false
-    }
-})
-
 // Schema
 const FriendSchema = new Schema({
     name: {
@@ -30,15 +22,17 @@ const FriendSchema = new Schema({
         enum: ["true", "false"],
         required: true
     },
+    care:  {
+        type: String,
+        enum: ["foster", "adopt"],
+        required: true
+    }, 
     // make reference to UserSchema
     owner: {
         type: Schema.Types.ObjectId,
         ref: "user"
-    }, 
-    friend_info: FriendInfoSchema
-
+    }
 });
 
 // export schema
-module.exports = FriendInfoSchema = mongoose.model("friend_info", FriendInfoSchema);
 module.exports = Friend = mongoose.model("friends", FriendSchema);
