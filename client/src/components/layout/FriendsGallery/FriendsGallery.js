@@ -54,7 +54,7 @@ class FriendsGallery extends Component {
                                 {this.state.friends.map((friend) => (
                                     <tr
                                         key = {friend._id}
-                                        onClick = {() => this.props.history.push(`/friends/${friend._id}`)}
+                                        onClick = {() => this.props.history.push({pathname: `/friends/${friend._id}`, friendInfo: friend})}
                                     >
                                         <td>{friend.name}</td>
                                         <td>{friend.gender}</td>

@@ -4,25 +4,24 @@ import Sidenav from "./Sidenav/Sidenav";
 
 
 class FriendProfile extends Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
 
         this.state = {
-            name: null
+            name: props.history.location.friendInfo.name, 
+            gender: props.history.location.friendInfo.gender,
+            neutered: props.history.location.friendInfo.neutered,
+            care: props.history.location.friendInfo.care,
+            about: props.history.location.friendInfo.about
         }
-        this.fetchFriend = this.fetchFriend.bind(this);
     }
 
     componentDidMount(){
         M.AutoInit();
         const friendId = this.props.match.params.id;
-        console.log(friendId);
-        this.fetchFriend(friendId);
-    }
-
-    fetchFriend(friendId){
-        // TO DO: write a GET request to return a single friend
-        // finish friend profile
+        //console.log(this.props.history.location.friendInfo);
+        //this.fetchFriend(friendId);
+        console.log(this.state);
     }
 
     render(){

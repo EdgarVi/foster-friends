@@ -27,6 +27,10 @@ const FriendSchema = new Schema({
         enum: ["foster", "adopt"],
         required: true
     }, 
+    about: {
+        type: String,
+        required: true
+    },
     // make reference to UserSchema
     owner: {
         type: Schema.Types.ObjectId,
