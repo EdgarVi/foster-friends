@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import M from "materialize-css";
 import "./FriendsGallery.css";
-import Sidenav from "./Sidenav";
+import Sidenav from "../Sidenav/Sidenav";
 
 
 class FriendsGallery extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import M from "materialize-css";
-import Sidenav from "./Sidenav";
+import Sidenav from "./Sidenav/Sidenav";
 
 
 class FriendProfile extends Component {

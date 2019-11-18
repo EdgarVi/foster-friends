@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { logoutUser } from "../../actions/authActions";
+import { logoutUser } from "../../../actions/authActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 // Import Materialize
 import M from "materialize-css";
-
+import "./Sidenav.css";
 class Sidenav extends Component {
   constructor(props){
     super(props);
