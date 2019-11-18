@@ -123,7 +123,8 @@ router.post('/add-friend', (req, res)=>{
       species: req.body.species,
       gender: req.body.gender,
       neutered: req.body.neutered,
-      owner: req.body.owner
+      owner: req.body.owner,
+      care: req.body.care
   });
   
   User.findOne({_id: req.body.owner})
