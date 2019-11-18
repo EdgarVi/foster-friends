@@ -17,6 +17,7 @@ class AddFriend extends Component {
         gender: "",
         neutered: false,
         about: "",
+        care: "",
         errors: {}
       }
     }
@@ -51,7 +52,8 @@ class AddFriend extends Component {
             gender: this.state.gender,
             neutered: neutered_,
             about: this.state.about,
-            owner: this.props.auth.user.id
+            owner: this.props.auth.user.id,
+            care: this.state.care
         };
 
         // call middleware
@@ -122,6 +124,21 @@ class AddFriend extends Component {
                                     <option value="false">No</option>
                                 </select>
                                 <label>Neutered?</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <select
+                                onChange={this.onChange}
+                                value={this.state.care}
+                                id="care"
+                                type="text"
+                                >
+                                    <option value="" disabled selected>Care level?</option>
+                                    <option value="foster">Foster</option>
+                                    <option value="adopt">Adopt</option>
+                                </select>
+                                <label>Care level?</label>
                             </div>
                         </div>
                         <div className="row">
