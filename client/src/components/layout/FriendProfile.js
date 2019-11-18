@@ -18,10 +18,6 @@ class FriendProfile extends Component {
 
     componentDidMount(){
         M.AutoInit();
-        const friendId = this.props.match.params.id;
-        //console.log(this.props.history.location.friendInfo);
-        //this.fetchFriend(friendId);
-        console.log(this.state);
     }
 
     render(){
@@ -33,10 +29,23 @@ class FriendProfile extends Component {
                     </div>
                     <div className="col s9" id="Friend-Profile">
                         <h4 className="center-align">
-                            <b>Profile</b>
+                            <b>Meet {this.state.name}!</b>
                         </h4>
-                        <h5>About</h5>
-                        <p></p>
+                        <div className="display-container">
+                            <div className="Display-item">
+                                About: <span className="Display-value">{this.state.about}</span>
+                            </div>
+                            <div className="Display-item">
+                                Gender: <span className="Display-value">{this.state.gender}</span>
+                            </div>
+                            <div className="Display-item">
+                                Neutered: <span className="Display-value">{this.state.neutered}</span>
+                            </div>
+                            <div className="Display-item">
+                                Care level: <span className="Display-value">{this.state.care}</span>
+                            </div>
+                        </div>
+
                     </div>  
                 </div>      
             </div>
