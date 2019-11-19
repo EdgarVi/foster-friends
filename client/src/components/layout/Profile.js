@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import {withRouter} from "react-router-dom";
 import {getUser} from "../../actions/authActions";
 import PropTypes from "prop-types";
-import Sidenav from "./Sidenav";
+import Sidenav from "./Sidenav/Sidenav";
 class Profile extends Component {
   constructor(props){
     super();

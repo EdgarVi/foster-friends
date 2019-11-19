@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import M from "materialize-css";
 import "./FriendsGallery.css";
-import Sidenav from "./Sidenav";
+import Sidenav from "../Sidenav/Sidenav";
 
 
 class FriendsGallery extends Component {
@@ -54,11 +54,11 @@ class FriendsGallery extends Component {
                                 {this.state.friends.map((friend) => (
                                     <tr
                                         key = {friend._id}
-                                        onClick = {() => this.props.history.push(`/friends/${friend._id}`)}
+                                        onClick = {() => this.props.history.push({pathname: `/friends/${friend._id}`, friendInfo: friend})}
                                     >
-                                        <th>{friend.name}</th>
-                                        <th>{friend.gender}</th>
-                                        <th>{friend.species}</th>
+                                        <td>{friend.name}</td>
+                                        <td>{friend.gender}</td>
+                                        <td>{friend.species}</td>
                                     </tr> 
                                 ))}
                             </tbody> 

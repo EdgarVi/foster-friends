@@ -21,7 +21,7 @@ import EditProfile from "./components/layout/EditProfile";
 import AddFriend from "./components/layout/AddFriend";
 import EditFriends from "./components/layout/EditFriends";
 import SearchFriends from "./components/layout/SearchFriends";
-import FriendsGallery from "./components/layout/FriendsGallery";
+import FriendsGallery from "./components/layout/FriendsGallery/FriendsGallery";
 import FriendProfile from "./components/layout/FriendProfile";
 
 // Check for token to keep user logged in

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import M from "materialize-css";
-import Sidenav from "../layout/Sidenav";
+import Sidenav from "./Sidenav/Sidenav";
 
 
 // redux

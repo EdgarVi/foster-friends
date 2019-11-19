@@ -22,12 +22,20 @@ const FriendSchema = new Schema({
         enum: ["true", "false"],
         required: true
     },
+    care:  {
+        type: String,
+        enum: ["foster", "adopt"],
+        required: true
+    }, 
+    about: {
+        type: String,
+        required: true
+    },
     // make reference to UserSchema
     owner: {
         type: Schema.Types.ObjectId,
         ref: "user"
     }
-
 });
 
 // export schema

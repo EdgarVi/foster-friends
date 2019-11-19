@@ -36,7 +36,8 @@ router.post("/register", (req, res) => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        userType: req.body.userType
       });
 
       // Hash password before saving in database
@@ -115,12 +116,16 @@ router.post('/login', (req, res) => {
 // @desc Write friend to database
 // @access Public (need to figure out how to make private)
 router.post('/add-friend', (req, res)=>{
+  
+  var newFriendInfo = new mongoose.Schema()
   const newFriend = new Friend({
       name: req.body.name,
       species: req.body.species,
       gender: req.body.gender,
       neutered: req.body.neutered,
-      owner: req.body.owner
+      owner: req.body.owner,
+      care: req.body.care, 
+      about: req.body.about
   });
   
   User.findOne({_id: req.body.owner})
@@ -154,7 +159,7 @@ router.get('/get-user', (req, res) => {
 
 
 
-// @route GET api/users/search-friends (doesn't work)
+// @route GET api/users/search-friends
 // @desc Query friends based off search parameters
 // @access Public
 router.get("/get-friends", (req, res) =>{
@@ -169,6 +174,24 @@ router.get("/get-friends", (req, res) =>{
   }).catch((e) => {
     res.status(400).send(e);
   });
+});
+
+// @route POST api/users/push-single-friend
+// @desc Add a single friend to User's friend array
+// @access Public
+router.post("/push-single-friend", (req, res) => {
+  var userId = req.body.user;
+  var friendId = req.body.friend;
+
+  User.findOne({_id: userId})
+  .exec((err, user) => {
+    Friend.findOne({_id:friendId}).exec((err, friend) => {
+      user.friends.push(friend);
+      user.save();
+      return res.send(user);
+    })
+  })
+
 });
 
 module.exports = router;
