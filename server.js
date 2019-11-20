@@ -5,6 +5,8 @@ const passport = require("passport");
 const cors = require("cors");
 const users = require("./routes/api/users");
 const app = express();
+const fs = require("fs-extra");
+const multer = require("multer");
 
 // CORS
 app.use(cors());
