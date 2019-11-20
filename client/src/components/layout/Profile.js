@@ -27,11 +27,9 @@ class Profile extends Component {
           <Sidenav name={this.props.auth.user.name}/>
         </div>
         <div className="col s9">
-          <h4 className="center-align">Your profile</h4>    
+          <h4 className="center-align">Welcome {this.props.auth.user.name}!</h4>    
           <ul class="collection">
-            <li class="collection-item"><b>Name:</b> {this.props.auth.user.name}</li>
-            <li class="collection-item"><b>Email:</b>{this.props.auth.user.email}</li>
-            <li class="collection-item"><b>Friends:</b>None</li>
+            
           </ul>
         </div>
       </div>
