@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 var mongoose = require('mongoose');
+const fs = require("fs-extra");
 mongoose.set('debug', true);
 
 
@@ -194,4 +195,19 @@ router.post("/push-single-friend", (req, res) => {
 
 });
 
+
+// @route POST api/users/pushImage
+router.post("/push-image", (req, res) => {
+  
+  var userId = req.body.user;
+
+  User.findOne({_id: userId})
+  .exec((err, user) => {
+
+    user.profileImg.data = fs.readFileSync(req.files.userPhoto.path); // set image
+    newImg.contentType = 'image/png';
+    user.save();
+    return res.send(user);  
+  })
+})
 module.exports = router;

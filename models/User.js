@@ -27,6 +27,10 @@ const UserSchema = new Schema({
     userType: {
         type: String,
         enum: ["Rescue Organization", "Shelter", "Individual"]
+    },
+    profileImg: {
+        type: String,
+        data: Buffer
     }
 });
 

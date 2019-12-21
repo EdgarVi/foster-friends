@@ -5,8 +5,8 @@ const passport = require("passport");
 const cors = require("cors");
 const users = require("./routes/api/users");
 const app = express();
-const fs = require("fs-extra");
-const multer = require("multer");
+//const fs = require("fs-extra");
+//const multer = require("multer");
 
 // CORS
 app.use(cors());
@@ -33,6 +33,13 @@ app.use(passport.initialize());
 
 // Passport config
 require("./config/passport")(passport);
+
+// Multer config
+/*app.use(multer({ dest: './uploads/',
+    rename: function (fieldname, filename) {
+      return filename;
+    },
+}));*/
 
 // Routes
 app.use("/api/users", users);
