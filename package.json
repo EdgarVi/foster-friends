@@ -30,7 +30,7 @@
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.3",
-    "mongoose": "^5.6.9",
+    "mongoose": "^5.7.5",
     "mongoose_schema-json": "^1.0.3",
     "multer": "^1.4.2",
     "passport": "^0.4.0",
