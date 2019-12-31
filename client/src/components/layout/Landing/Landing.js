@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Navbar from './Navbar';
+import Navbar from '../Navbar';
+import "./Landing.css";
 
 class Landing extends Component {
   render() {
     return (
       <div>
         <Navbar/>
-        <div style={{ height: "75vh" }} className="container valign-wrapper">
+        <div style={{ height: "90vh" }} className="valign-wrapper" id="landing-container">
           <div className="row">
             <div className="col s12 center-align">
               <p className="flow-text grey-text text-darken-1">
@@ -46,4 +47,6 @@ class Landing extends Component {
       </div>
     );
   }
-}export default Landing;
+}
+
+export default Landing;

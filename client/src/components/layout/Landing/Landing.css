@@ -1,0 +1,4 @@
+#landing-container {
+    background: rgb(230,230,250);
+    background: linear-gradient(90deg, rgba(230,230,250,1) 20%, rgba(255,240,245,1) 91%);
+}

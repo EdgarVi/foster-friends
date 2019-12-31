@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 // components
-import Landing from "./components/layout/Landing";
+import Landing from "./components/layout/Landing/Landing";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/dashboard/private-route/PrivateRoute";
