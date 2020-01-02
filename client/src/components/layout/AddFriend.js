@@ -18,6 +18,7 @@ class AddFriend extends Component {
         neutered: false,
         about: "",
         care: "",
+        images: [],
         errors: {}
       }
     }
@@ -151,13 +152,27 @@ class AddFriend extends Component {
                                 <label htmlFor="name">Tell us about your friend!</label>
                             </div>
                         </div>
-                        <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                            <button
-                            type="submit"
-                            className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-                            >
-                            Register Friend
-                            </button>
+                        <div className="row">
+                            <div className="col s6">
+                                <div className="file-field input-field">
+                                    <div className="btn">
+                                        <span>submit images</span>
+                                        <input type="file" multiple/>
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Upload one or more images"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col s6">
+                                <button
+                                type="submit"
+                                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                                >
+                                Register Friend
+                                </button>
+                            </div>
+                            
                         </div>
                     </form>    
                 </div>
