@@ -35,6 +35,11 @@ const FriendSchema = new Schema({
     owner: {
         type: Schema.Types.ObjectId,
         ref: "user"
+    },
+    // string which holds ref to image hosted on Cloudinary
+    imagePath: { 
+        type: String,
+        required: false
     }
 });
 
